@@ -1,0 +1,13 @@
+<h1>
+	<span><%= @client.name %></span>	
+</h1>
+<h2>
+	<span><%= t('titles.work_done_list') %></span>	
+</h2>
+
+<div class="row topMargin30">
+	<div id="flash"> </div>
+	<div class="col-sm-10 col-sm-offset-1" id="client_task_list">
+		<%= render 'shared/client_task_list' %>
+	</div>
+</div>

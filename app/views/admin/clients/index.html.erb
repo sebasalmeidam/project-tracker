@@ -1,0 +1,51 @@
+<div class="row">
+	<h1>
+	<span>Lista de Clientes	</span>
+	
+	<span><%= link_to t('buttons.new'), new_admin_client_path, class: "btn btn-success" %></span>
+	<span><%= link_to "Ir a Usuarios", admin_users_path, class: "btn btn-primary" %></span>
+	</h1>
+</div>
+
+	
+<div class="row topMargin30">
+	<div class="col-sm-10 col-sm-offset-1">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="">Nombre</th>
+					<th class="">Acción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @clients.blank? %>
+				<tr>
+					<td class="text-center"	colspan="2"><%= t('attributes.no_content_yet') %></td>
+					
+				</tr>
+				<% else %>
+				<% @clients.each do |c| %>
+				<tr>
+					<td><%= link_to c.name, [:admin, c] %></td>
+					<td>
+						<%= link_to t('buttons.edit'), edit_admin_client_path(c), class: 'btn btn-primary' %>
+						<%= link_to t('buttons.delete'), admin_client_path(c),
+					method: :delete, data: { confirm: "Seguro que quieres eliminar este cliente?" }, class: 'btn btn-danger' %>	
+					</td>
+				</tr>
+				<% end %>
+				
+				
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h1>Tareas pendientes</h1>
+
+<div class="row topMargin30" id="pending_tasks">
+	
+		<%= render 'shared/pending_tasks' %>
+	
+</div>

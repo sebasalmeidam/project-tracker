@@ -1,0 +1,26 @@
+<h1>
+	<span><%= t('titles.edit_task') %></span>	
+	<span><%= link_to t('buttons.back'), admin_client_path(@client), class: "btn btn-default" %></span>	
+</h1>
+
+<div class="row marginTop30">
+    <%= form_for [:admin, @client, @task], :html => {class: "form-horizontal"} do |f| %>
+  <div class="col-md-8">
+    <%= render(:partial => "form", locals: {f: f}) %>
+    
+    
+    <div class="form-group">
+      <%= f.label :done, "Se completó la tarea?", class: "col-md-4 control-label" %>
+      <div class="col-md-8">
+        <%= f.check_box :done, class: "checkbox checkbox-inline" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-8 col-md-offset-4">
+        <%= f.submit t('buttons.edit'), :class => 'btn btn-default' %>
+      </div>
+    </div>
+    <% end %>
+</div>
+

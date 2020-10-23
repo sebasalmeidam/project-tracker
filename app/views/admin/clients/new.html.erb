@@ -1,0 +1,17 @@
+<h1>
+	<span><%= t('titles.create_client') %></span>	
+	<span><%= link_to t('buttons.back'), admin_clients_path, class: "btn btn-default" %></span>	
+</h1>
+
+<div class="row marginTop30">
+    <%= form_for [:admin, @client], :html => {class: "form-horizontal"} do |f| %>
+  <div class="col-md-8">
+    <%= render(:partial => "form", locals: {f: f}) %>
+    
+    <div class="form-group">
+      <div class="col-md-8 col-md-offset-4">
+        <%= f.submit t('buttons.create_client'), :class => 'btn btn-default' %>
+      </div>
+    </div>
+    <% end %>
+</div>

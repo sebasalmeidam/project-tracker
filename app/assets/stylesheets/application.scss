@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap-datepicker
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-social";
+@import 'font-awesome';
+
+/** configs **/
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.footer {
+  background: #5C6670;
+  color: white;
+}
+
+.marginTop10{
+	margin-top: 10px;
+}
+
+.marginTop20{
+	margin-top: 20px;
+}
+
+.marginTop30{
+	margin-top: 30px;
+}
+
+.marginTop40{
+	margin-top: 40px;
+}
+
+.marginTop50{
+	margin-top: 50px;
+}
+
+.remember {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/** nav **/
+
+nav.navbar {
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  
+}
+
+nav a {
+  color: #5C6670;
+}

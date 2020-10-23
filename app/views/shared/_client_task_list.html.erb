@@ -1,0 +1,52 @@
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th class=""><%= t('attributes.date') %></th>
+			<th class=""><%= t('attributes.description') %></th>
+		<% if current_user.admin_type %>
+			<th class=""><%= t('attributes.project') %></th>
+			<th class=""><%= t('attributes.hours') %></th>
+			<th class=""><%= t('attributes.completed') %>?</th>
+			<th class=""><%= t('attributes.actions') %></th>
+		<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% if !@tasks.blank? %>
+		<% @tasks.each do |t| %>
+			<tr>
+				<td><%= t.task_date %></td>
+			<% if current_user.admin_type %>
+				<td><%= link_to t.description, admin_client_task_path(@client, t) %></td>
+			<% else %>
+				<td><%= link_to t.description, client_task_path(@client, t) %></td>
+			<% end %>
+			<% if current_user.admin_type %>
+				<td><%= t.project %></td>
+				<td><%= t.hours %></td>
+				<td><span data-toggle="tooltip" data-placement="top" title="<%= t.pending %>"><%= t("#{t.done}") if !t.done.nil? %></span></td>
+
+				<td>
+					<% if t.done == true %>
+						<%= link_to task_incomplete_admin_client_task_path(t.client_id, t.id), method: :put, :remote => true, class: "btn btn-danger btn-xs" do %>
+							<i class="glyphicon glyphicon-remove"></i>
+						<% end %>
+					<% else %>
+						<%= link_to task_complete_admin_client_task_path(t.client_id, t.id), method: :put, :remote => true, class: "btn btn-success btn-xs" do %>
+							<i class="glyphicon glyphicon-ok"></i>
+						<% end %>
+					<% end %>
+					<%= link_to t('buttons.edit'), edit_admin_client_task_path(@client, t), class: 'btn btn-primary' %>
+					<%= link_to t('buttons.delete'), [:admin, @client, t],	method: :delete, data: { confirm: "Seguro que quieres eliminar este registro?" }, class: 'btn btn-danger' %>
+					
+				</td>
+			<% end %>
+			</tr>
+		<% end %>
+		<% else %>
+			<tr>
+				<td class="text-center"	colspan="4"><%= t('attributes.no_content_yet') %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

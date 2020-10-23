@@ -1,0 +1,40 @@
+<h1>
+	<span><%= t('titles.create_user') %></span>	
+	<span><%= link_to t('buttons.back'), admin_users_path, class: "btn btn-default" %></span>	
+</h1>
+
+<div class="row marginTop30">
+    <%= form_for [:admin, @user], :html => {class: "form-horizontal"} do |f| %>
+  <div class="col-md-8">
+    <%= render(:partial => "form", locals: {f: f}) %>
+    
+    <div class="form-group">
+      <div class="col-md-8 col-md-offset-4">
+        <%= f.submit t('buttons.create_user'), :class => 'btn btn-default' %>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+<script>
+  $(document).ready(function(){
+    
+    $("#client").click(function() {
+      if( $("#client_type").is(":checked")) {
+        $('#form').show();
+        $('#client_name_div').show();
+        $("#admin_type").prop("checked",false);
+      };
+    });
+
+    $("#admin").click(function() {
+      if( $("#admin_type").is(":checked")) {
+        $('#form').show();
+        $('#client_name_div').hide();
+        $('#client_name_form').val('');
+        $("#client_type").prop("checked",false);
+      };
+    });
+  });
+
+</script>

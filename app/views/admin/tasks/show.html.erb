@@ -1,0 +1,100 @@
+<h1>
+	<span><%= @client.name %></span>	
+	<span><%= link_to t('buttons.back'), admin_client_path(@client), class: "btn btn-default" %></span>
+	<span><%= link_to t('buttons.edit'), edit_admin_client_task_path(@client, @task), class: "btn btn-primary" %></span>
+</h1>
+<div><b><%= t('attributes.date') %>:</b> <%= @task.task_date %></div>
+<h2> <%= @task.description.capitalize %></h2>
+
+<div class="row">
+	<div class="col-sm-6">
+		<h3><%= t('attributes.client_p') %>:</h3>
+		<% if !@task.client_p.nil? %>
+			<ul>
+			<% participants = @task.client_p.split(",") %>
+				<% participants.each do |p| %>
+					<li><%= p %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+	<div class="col-sm-6">
+		<h3><%= t('attributes.firm_p') %>:</h3>
+		<% if !@task.firm_p.nil? %>
+			<ul>
+			<% participants = @task.firm_p.split(",") %>
+				<% participants.each do |p| %>
+					<li><%= p %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+</div> <!-- div for participants -->
+		
+<h3><%= t('attributes.reviewd_points') %>:</h3>
+
+<div class="row">
+	<div class="col-sm-12">
+		<%= @task.try(:result).gsub(/\n/, '<br/>').html_safe %>
+	</div>
+</div>
+
+<% if !@task.pending.nil? %>
+	<div class="marginTop30">
+		<h3><%= t('attributes.pendings_points') %>:</h3>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<%= @task.try(:pending).gsub(/\n/, '<br/>').html_safe %>
+		</div>
+	</div>
+<% end %>
+
+<h3>
+	<span><%= t('attributes.attachments') %>:</span>
+	<button class="btn btn-success btn-xs" id="add"><i class="glyphicon glyphicon-plus"></i></button>
+
+</h3>
+
+<div class="row">
+	<div class="col-sm-12" id="attachLIst" >
+		<%= render 'shared/attachment_list' %>			
+	</div>
+
+	<div class="col-sm-12" id="attachment" style="display: none;">
+		<%= render "shared/attachment" %>		
+	</div>
+	
+
+</div>
+
+<div class="row marginTop50 marginD"></div>
+<div class="row marginTop50 marginD"></div>
+<div class="row marginTop50 marginD"></div>
+<div class="row marginTop50 marginD"></div>
+
+
+<script type="text/javascript">
+		
+	$("#save").click(function() { 
+      setTimeout(function(){
+	    $('#flash').html('');
+	  }, 1500);
+      setTimeout(function(){
+	    $('#attachment_file_name').val('');
+	  }, 1500);
+       setTimeout(function(){
+	    $('#attachment_file').val('');
+	  }, 1500);
+  });
+
+  // add (toggle) attachments
+	$('#add').click(function (){
+  	$('#attachment').toggle();
+  	$('.marginD').toggle();
+	});
+
+	
+</script>
+

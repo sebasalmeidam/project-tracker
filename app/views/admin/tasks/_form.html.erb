@@ -1,0 +1,93 @@
+<%= f.hidden_field :client_id, value: @client.id %>
+
+<div class="form-group">
+    <%= f.label :task_date, "Fecha:", class: "col-md-4 control-label datepicker" %>
+    <div class="col-md-8" >
+    	<div class="input-group date">
+	      <%= f.text_field :task_date, class: "form-control"  %>
+	      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+    	</div>
+    </div>
+</div>
+
+<div class="form-group">
+	<%= f.label :project, "Proyecto:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.select :project, options_for_select(Task.const_get('PROYECTOS'), "#{@task.try(:project)}"), {prompt: "Seleccionar"}, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :description, "Descripción:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.text_field :description, class: "form-control" %>
+	</div>
+</div>
+
+<p class="small text-right"><em>(<%= t('attributes.separate_with_coma') %>)</em></p>
+<div class="form-group">
+	<%= f.label :client_p, "Participantes Cliente:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.text_field :client_p, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :firm_p, "Participantes TFC:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.text_field :firm_p, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :hours, "Horas Totales:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.number_field :hours, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :result, "Puntos Tratados:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.text_area :result, class: "form-control", style: "height: 150px" %>
+	</div>
+</div>
+
+<h3>Puntos para Seguimiento:</h3>
+<div class="form-group">
+	<%= f.label :incharge, "Encargado:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.text_field :incharge, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+    <%= f.label :pending_date, "Fecha:", class: "col-md-4 control-label datepicker" %>
+    <div class="col-md-8" >
+    	<div class="input-group date">
+	      <%= f.text_field :pending_date, class: "form-control"  %>
+	      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+    	</div>
+    </div>
+</div>
+
+<div class="form-group">
+	<%= f.label :pending, "Puntos para Seguimiento:", class: "col-md-4 control-label" %>
+	<div class="col-md-8">
+		<%= f.text_area :pending, class: "form-control", style: "height: 100px" %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+    
+  $('.form-group .input-group.date').datepicker({
+  	language: "es",
+  	todayHighlight: true,
+  	autoclose: true,
+  	format: 'yyyy-mm-dd',
+	});
+
+
+	});
+</script>

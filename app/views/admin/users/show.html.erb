@@ -1,0 +1,54 @@
+<div class="row">
+	<h1>Perfil de administrador</h1>
+</div>
+
+<div class="row">
+	<h2>
+	<span>Clientes</span>
+	<span><%= link_to "Ir", admin_clients_path, class: "btn btn-primary btn-sm" %></span>
+	</h2>
+</div>
+
+<% if !@clients.blank? %>
+	<div class="row">
+		
+			<div class="panel-group">
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <span>Lista de Clientes</span>
+			        <button data-toggle="collapse" href="#collapse1" class="btn btn-success btn-sm">Ver</button>
+			      </h4>
+			    </div>
+			    <div id="collapse1" class="panel-collapse collapse">
+			      <ul class="list-group">
+				      <% @clients.each do |c| %>
+				        <li class="list-group-item"><%= link_to c.name, admin_client_path(c) %></li>
+				      <% end %>
+			      </ul>
+			    </div>
+			  </div>
+			</div> <!-- panel div--> 
+		 <!-- col-6 div--> 
+	</div> <!-- row div--> 
+<% else %>
+	<span>No hay clientes todavía..!</span>
+<% end %>
+
+<div class="row">
+<h2>
+	<span>Usuarios</span>
+	<span><%= link_to "Ir", admin_users_path, class: "btn btn-primary btn-sm" %></span>
+</h2>
+</div>
+
+
+<div class="row">
+	<h1>Tareas pendientes</h1>
+</div>
+
+<div class="row topMargin30" id="pending_tasks">
+	<div class="col-sm-12">
+		<%= render 'shared/pending_tasks' %>
+	</div>
+</div>

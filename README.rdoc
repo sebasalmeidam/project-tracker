@@ -1,0 +1,15 @@
+== README
+
+Project tracking app for consultancy firms projects.
+
+Characteristics:
+
+* Ruby on Rails
+
+* File upload with carrierwave
+
+* Email notifications
+
+* Different roles
+
+* ...

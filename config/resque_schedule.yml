@@ -1,0 +1,11 @@
+daily_db_backup:
+  cron: "0 22 * * *"
+  class: "DbBackupJob"
+  queue: :auto_db_backup
+  description: "This job will backup database every midnight at 10 PM."
+
+db_backup_mail:
+  cron: "0 23 * * *"
+  class: "DbBackupMail"
+  queue: "db_backup_mail"
+  description: "This job will send email after db backuped"

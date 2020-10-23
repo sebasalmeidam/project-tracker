@@ -1,0 +1,15 @@
+<% if @task.attachments.any? %>
+	<ul>
+	<% @task.attachments.each do |f| %>
+		<li>
+			<%= f.file_name %> <%= link_to "#{t('attributes.download')} - #{File.basename(f.file.url)}", attachment_path(f), target: "_blank" unless f.file.file.nil? %>
+			<% if current_user.admin_type %>
+				<%= link_to admin_client_task_attachment_path(@task.client_id, @task.id, f), method: :delete, data: { confirm: 'Seguro que quieres eliminar este adjunto?' }, :remote => true, class: "btn btn-danger btn-xs delete_attach" do %>
+		    <i class="glyphicon glyphicon-remove"></i>
+				<% end %>					
+			<% end %>
+			
+		 </li>	
+	<% end %>
+	</ul>
+<% end %>

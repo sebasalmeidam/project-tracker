@@ -1,0 +1,35 @@
+<h1>Pendiente editar - aquí la lista de todos los trabajos realizados</h1>
+<h2><%= t('titles.work_done_list') %></h2>
+
+<div class="row topMargin30">
+	<div class="col-sm-10 col-sm-offset-1">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class=""><%= t('attributes.date') %></th>
+					<th class=""><%= t('attributes.description') %></th>
+					<th class=""><%= t('attributes.project') %></th>
+					<th class=""><%= t('attributes.actions') %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if !@tasks.blank? %>
+				<% @tasks.each do |t| %>
+					<tr>
+						<td><%= t.date %></td>
+						<td><%= link_to t.description, "#" %></td>
+						<td><%= t.project %></td>
+						<td>
+							<%= link_to t('buttons.edit'), '#', class: 'btn btn-primary' %>
+							<%= link_to t('buttons.delete'), '#',	method: :delete, data: { confirm: "Seguro que quieres eliminar este cliente?" }, class: 'btn btn-danger' %>
+						</td>
+					</tr>
+				<% else %>
+					<tr>
+						<td class="text-center"	colspan="2"><%= t('attributes.no_content_yet') %></td>
+					</tr>
+					
+			</tbody>
+		</table>
+	</div>
+</div>

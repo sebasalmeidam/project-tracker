@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tfc</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<%= render "layouts/header" %>
+
+	<% flash.each do |key, message| %>
+			<div class="alert alert-<%= key %>">
+				<%= message %>
+			</div>
+	<% end %>
+<div class="container">
+	<% if logged_in? %>
+			<div class="row pull-right text-right">
+				<span class="bRight small"> Iniciado sesión como: <%= current_user.name.titleize %>&nbsp; </span> 
+					<%= link_to logout_path, method: "delete", class: "link-texts small" do %>
+						(<%= t('attributes.logout') %>)
+					<% end %>
+			</div>
+	<% end %>
+<%= yield %>
+</div>
+
+<%= render "layouts/footer" %>
+
+</body>
+</html>

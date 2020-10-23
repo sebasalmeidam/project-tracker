@@ -1,0 +1,41 @@
+es:
+  "true": Si
+  "false": "No"
+  titles:
+    create_client: Crear Cliente
+    edit_client: Editar Cliente
+    work_done_list: Detalle de Trabajos Realizados
+    create_task: Crear Registro de Trabajo
+    edit_task: Editar Registro
+    create_user: Crear Usuario
+    edit_user: Editar Usuario
+  buttons:
+    create_client: Crear Cliente
+    edit_client: Editar Cliente
+    edit: Editar
+    delete: Eliminar
+    new: Agregar
+    add_task: Agregar Trabajo
+    back: Regresar
+    save: Guardar
+    create_user: Crear Usuario
+    edit_user: Editar Usuario
+  attributes:
+    no_content_yet: No hay contenido todavía..!
+    date: Fecha
+    description: Descripción
+    project: Proyecto
+    actions: Acciones
+    client_p: Participantes Cliente
+    firm_p: Participantes TFC
+    results: Resultados
+    separate_with_coma: Separar todos los participantes con coma
+    pendings_points: Puntos para seguimiento
+    attachments: Adjuntos
+    download: Descargar
+    add_attachments: Agregar Adjuntos
+    reviewd_points: Puntos Tratados
+    hours: Horas
+    completed: Completo
+    client: Cliente
+    logout: Cerrar sesión

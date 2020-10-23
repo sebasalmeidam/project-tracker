@@ -1,0 +1,52 @@
+<div class="form-group user_type">
+  <label class="col-md-4 control-label">Tipo de Usuario: </label>
+
+  <div class="col-sm-offset-4">
+	  <label class="radio-inline" id="client">
+		  <%= f.check_box :client_type, id:"client_type" %>
+		  <span>Cliente</span>
+	  </label>
+	  <label class="radio-inline" id="admin">
+		  <%= f.check_box :admin_type, id:"admin_type" %>
+		  <span>TFC</span>
+	  </label>
+	 </div>
+ </div>
+
+<div id="form" style="display:none">
+	<div class="form-group" id="client_name_div" style="display:none;">
+	    <%= f.label :client_id, "Cliente:", class: "col-md-4 control-label" %>
+	    <div class="col-md-8">
+	      <%= f.select :client_id, Client.all.map{ |c| [c.name, c.id]}, {prompt: "Seleccionar"}, class: "form-control", id:"client_name_form" %>
+	    </div>
+	</div>
+
+
+	<div class="form-group">
+	    <%= f.label :name, "Nombre:", class: "col-md-4 control-label" %>
+	    <div class="col-md-8">
+	      <%= f.text_field :name, class: "form-control" %>
+	    </div>
+	</div>
+
+	<div class="form-group">
+	    <%= f.label :email, "Mail:", class: "col-md-4 control-label" %>
+	    <div class="col-md-8">
+	      <%= f.text_field :email, class: "form-control" %>
+	    </div>
+	</div>
+
+	<div class="form-group">
+	    <%= f.label :password, "Contraseña:", class: "col-md-4 control-label" %>
+	    <div class="col-md-8">
+	      <%= f.password_field :password, class: "form-control" %>
+	    </div>
+	</div>
+	<div class="form-group">
+	    <%= f.label :password_confirmation, t('attributes.password_confirmation')+ ":", class: "col-md-4 control-label" %>
+	    <div class="col-md-8">
+	      <%= f.password_field :password_confirmation, class: "form-control" %>
+	    </div>
+	</div>
+</div>
+
